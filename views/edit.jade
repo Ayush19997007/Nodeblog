@@ -1,0 +1,39 @@
+extends layout
+block content
+   body
+        .contentColor
+          p category is : #{post[0].category} 
+        .author
+           p and is written by : #{post[0].author}
+        .date
+           p on #{post[0].date}
+        img.photo(src='/images/#{post[0].mainimage}')
+        .postBody
+         !=post[0].body
+        br
+        p this is the edited post
+        form(method='post',action='/posts/show/:id/edit/',enctype="multipart/form-data")
+            .form-group 
+                 label Title:
+                 input.form-control(name='title',type='text',value='#{post[0].title}' required)
+            .form-group 
+                 label Category: 
+                 select.form-control(name='category') 
+                    each category in categories
+                      option(value='#{category.name}') #{category.name}
+            .form-group 
+                 label Body:
+                 textarea.form-control(name='body',id='body',type='text' required) #{post[0].body}
+            .form-group 
+                 label Main Image:
+                 input.form-control(name='mainimage',type='file',value='/images/#{post[0].mainimage}' required)
+            .form-group
+                 label Author
+                  select.form-control(name='author')
+                    option(value='Ayush Srivastava') Ayush Srivastava
+                    option(value='Golu') Golu
+            input.btn.btn-default(name='submit',type='submit',value='Save')   
+          
+        hr
+
+      

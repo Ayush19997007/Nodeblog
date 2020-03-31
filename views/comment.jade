@@ -1,0 +1,60 @@
+extends layout
+block content
+     body
+            .postColor
+              p #{post[0].title}
+            .contentColor
+              p category is : #{post[0].category} 
+            .author
+               p and is written by : #{post[0].author}
+            .date
+               p on #{post[0].date}
+            img.photo(src='/images/#{post[0].mainimage}')
+            br
+            br
+            .postBody
+             !=post[0].body
+            br
+            p.past Comments 
+            hr
+          
+            each comment in comments  
+              .contentColor
+                h1.commentColor  #{comment.yourComment}
+                p.commentAuthorColor - #{comment.name}
+                p.commentEmail contact:#{comment.email}
+                a.button1(href='/posts/show/#{post[0]._id}/comments/delete/#{comment._id}/') Delete Comment
+                a.button(href='/posts/show/#{post[0]._id}/comments/edit/#{comment._id}/') Edit Comment
+                
+                hr 
+
+        
+        p.currentComment Comment
+        hr
+        form(method='post',action='/posts/show/:id/comments/')
+            p #{id}
+            .form-group 
+              label Train Name:
+              input.form-control(name='trainName',type='text',value='#{post[0].title}' required)
+            br
+            .form-group 
+                 label Name:
+                 input.form-control(name='name',type='text' required)
+            br
+            .form-group 
+                 label Age:
+                 input.form-control(name='age',type='text' required)
+            p Comment:
+            .form-group 
+                 label 
+                 textarea.form-control(name='yourComment',id='id',type='text' required) 
+            .form-group 
+                 label Email:
+                 input.form-control(name='email',type='text' required)
+            br
+            .form-group 
+                 label Tags:
+                 input.form-control(name='otherTags',type='text' required)
+            
+            input.btn.btn-default(name='submit',type='submit',value='Save')  
+        hr

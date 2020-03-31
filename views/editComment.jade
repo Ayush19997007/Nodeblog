@@ -1,0 +1,40 @@
+extends layout
+block content
+   body
+        .contentColor
+          p category is : #{post[0].category} 
+        .author
+           p and is written by : #{post[0].author}
+        .date
+           p on #{post[0].date}
+        img.photo(src='/images/#{post[0].mainimage}')
+        .postBody
+         !=post[0].body
+        br
+        
+        form(method='post',action='/posts/show/#{post[0]._id}/comments/edit/#{comment[0]._id}/')
+            p #{id}
+            .form-group 
+              label Train Name:
+              input.form-control(name='trainName',type='text',value='#{post[0].title}' required)
+            br
+            .form-group 
+                 label Name:
+                 input.form-control(name='name',type='text',value='#{comment[0].name}' required)
+            br
+            .form-group 
+                 label Age:
+                 input.form-control(name='age',type='text',value='#{comment[0].age}' required)
+            p Comment:
+            .form-group 
+                 label Comment
+                 textarea.form-control(name='yourComment',id='id',type='text' required) #{comment[0].yourComment} 
+            .form-group 
+                 label Email:
+                 input.form-control(name='email',type='text',value='#{comment[0].email}' required)
+            br
+            .form-group 
+                 label Tags:
+                 input.form-control(name='otherTags',type='text',value='#{comment[0].otherTags}' required) 
+            
+            input.btn.btn-default(name='submit',type='submit',value='Save')  

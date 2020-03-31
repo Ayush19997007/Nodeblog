@@ -1,0 +1,17 @@
+extends layout
+block content
+ if posts
+    each post in posts  
+        .contentColor
+          p comment category is : #{post.category} 
+        .author
+           p and is written by : #{post.author}
+        .date
+           p on #{post.date}
+        img.photo(src='/images/#{post.mainimage}')
+        !=truncateText(post.body,400)
+          br
+          a.button(href='/posts/show/#{post._id}') Readmore
+        hr
+
+      

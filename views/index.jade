@@ -1,0 +1,27 @@
+extends layout
+block content
+   if posts
+    each post in posts  
+        .postColor
+         a(href='/posts/show/#{post._id}')=post.title
+
+        .contentColor
+         p #[comment category is ] #[a(href='posts/showcategory/category/#{post.category}')=post.category]
+       
+        .author
+           p and is written by : #{post.author}
+           
+        .date
+           p on #{post.date}
+        img.photo(src='/images/#{post.mainimage}')
+        .body
+          !=truncateText(post.body,400)
+          br
+          a.button2(href='/posts/show/#{post._id}') Readmore
+          a.button1(href='posts/delete/#{post._id}') Delete
+        
+          
+         
+        hr
+
+      

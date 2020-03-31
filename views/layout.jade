@@ -1,0 +1,25 @@
+doctype html
+html
+   head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+   body
+    .container
+     img.logo(src='/images/bholu1.jpg')
+     br
+     br
+     nav 
+      ul
+       li
+        a(href='/') Home
+       li
+        a(href='/posts/add') add a post
+       li
+        a(href='/categories/add') add a category
+     !=messages()
+     br
+     br
+     block content
+.footer
+  p Copyright &copy;2020 All Rights Reserved
+

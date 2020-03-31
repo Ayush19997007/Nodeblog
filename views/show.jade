@@ -1,0 +1,21 @@
+extends layout
+block content
+   body
+        .contentColor
+          p category is : #{post[0].category} 
+        .author
+           p and is written by : #{post[0].author}
+        .date
+           p on #{post[0].date}
+        img.photo(src='/images/#{post[0].mainimage}')
+        .postBody
+         !=post[0].body
+        br
+        hr
+        br
+        a.button3(href='#{post[0]._id}/edit') Edit
+        a.button4(href='#{post[0]._id}/comments/') Comment
+        
+        hr
+
+      
